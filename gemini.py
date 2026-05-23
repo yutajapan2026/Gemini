@@ -15,7 +15,7 @@ if os.path.exists('.txt'):
     label2.pack()
     def close():
         root.destroy()
-    root.after(5000, close)
+    root.after(3000, close)
     root.mainloop()
 else:
     root = tk.Tk()
