@@ -60,7 +60,7 @@ gr.ChatInterface(
     chatbot=gr.Chatbot(height=300),
     textbox=gr.Textbox(placeholder="Geminiに相談", container=False, scale=7),
     title="Gemini",
-    description="何から始めますか?",
+    description="何かお手伝いできることはありますか？※バックエンドウィンドウを閉じると終了します。※プライバシーについての公式見解: https://support.google.com/gemini?p=privacy_help",
     examples=["こんにちは", "Geminiとは何ですか?", "Pythonとは何ですか?"],
     cache_examples=True,
     ).launch()
