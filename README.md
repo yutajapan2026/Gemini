@@ -1,3 +1,3 @@
-# Gemini for windows(”ñŒö®)
+# Gemini for windows(ï¿½ï¿½ï¿½ï¿½ï¿½)
 
-[Gemini API](https://ai.google.dev/gemini-api/docs?hl=ja)‚ğwebui‰»‚µ‚½‚à‚ÌB
+[Gemini API](https://github.com/googleapis/python-genai)ï¿½ï¿½webuiï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌB
