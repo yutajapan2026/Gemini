@@ -47,13 +47,30 @@ with open('.txt', "r", encoding="utf-8") as f:
 
 client = genai.Client(api_key=content)
 
-def gemini(message, history):
-    response = client.models.generate_content(
-        model="gemini-3.5-flash", contents=message
-    )
-    return response.text
-
 webbrowser.open('http://127.0.0.1:7860')
+
+def gemini(message, history):
+    for attempt in range(5):
+        try:
+            chat = client.chats.create(model='gemini-3.5-flash')
+            response = chat.send_message(message)
+            return response.text
+
+        except genai.APIStatusError as e:
+            if e.status_code == 503:
+                # 指数バックオフ: 2秒, 4秒, 8秒, 16秒, 32秒 + ランダムなジッター
+                wait_time = (2 ** attempt) + random.uniform(0, 1)
+                print(f"503 High Demand - {attempt+1}回目のリトライ、{wait_time:.1f}秒待機中...")
+                time.sleep(wait_time)
+            elif e.status_code == 429:
+                 # 429 レート制限：より長く待機
+                wait_time = 60 + random.uniform(0, 10)
+                print(f"429 Rate Limit - {attempt+1}回目のリトライ、{wait_time:.1f}秒待機中...")
+                time.sleep(wait_time)
+            else:
+                raise  # その他のエラーは直接スロー
+        raise Exception(f"{attempt}回のリトライ後も失敗しました")
+
 
 gr.ChatInterface(
     fn=gemini,
@@ -63,4 +80,4 @@ gr.ChatInterface(
     description="何かお手伝いできることはありますか？※バックエンドウィンドウを閉じると終了します。※プライバシーについての公式見解: https://support.google.com/gemini?p=privacy_help",
     examples=["こんにちは", "Geminiとは何ですか?", "Pythonとは何ですか?"],
     cache_examples=True,
-    ).launch()
+).launch()
