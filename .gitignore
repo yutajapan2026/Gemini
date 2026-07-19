@@ -3,3 +3,4 @@ venv
 .txt
 *.exe
 *.bat
+test.py

@@ -3,7 +3,6 @@ import os
 import tkinter as tk
 import gradio as gr
 from google import genai
-import time
 
 if os.path.exists('.txt'):
     root = tk.Tk()
@@ -51,28 +50,11 @@ client = genai.Client(api_key=content)
 webbrowser.open('http://127.0.0.1:7860')
 
 def gemini(message, history):
-    for attempt in range(5):
-        try:
-            interaction = client.interactions.create(
-            model="gemini-3.5-flash",
-            input=message
-            )
-            return interaction.output_text
-        except errors.APIError as e:
-            if e.code == 503:
-                # 指数バックオフ: 2秒, 4秒, 8秒, 16秒, 32秒 + ランダムなジッター
-                wait_time = (2 ** attempt) + random.uniform(0, 1)
-                print(f"503 High Demand - {attempt+1}回目のリトライ、{wait_time:.1f}秒待機中...")
-                time.sleep(wait_time)
-            elif e.code == 429:
-                 # 429 レート制限：より長く待機
-                wait_time = 60 + random.uniform(0, 10)
-                print(f"429 Rate Limit - {attempt+1}回目のリトライ、{wait_time:.1f}秒待機中...")
-                time.sleep(wait_time)
-            else:
-                raise  # その他のエラーは直接スロー
-        raise Exception(f"{attempt}回のリトライ後も失敗しました")
-
+    interaction1 = client.interactions.create(
+    model="gemini-3.5-flash",
+    input=message
+    )
+    return interaction1.output_text
 
 gr.ChatInterface(
     fn=gemini,
