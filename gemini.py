@@ -47,14 +47,21 @@ with open('.txt', "r", encoding="utf-8") as f:
 
 client = genai.Client(api_key=content)
 
+interaction = client.interactions.create(
+model="gemini-3.5-flash",
+input="",
+)
+
 webbrowser.open('http://127.0.0.1:7860')
 
 def gemini(message, history):
-    interaction1 = client.interactions.create(
+    global interaction
+    interaction = client.interactions.create(
     model="gemini-3.5-flash",
-    input=message
+    previous_interaction_id=interaction.id,
+    input=message,
     )
-    return interaction1.output_text
+    return interaction.output_text
 
 gr.ChatInterface(
     fn=gemini,
