@@ -29,7 +29,7 @@ gr.ChatInterface(
     fn=gemini,
     chatbot=gr.Chatbot(height=300),
     textbox=gr.Textbox(placeholder="Geminiに相談", container=False, scale=7),
-    title="Gemini",
+    title="gemini-3.5-flash",
     description="何かお手伝いできることはありますか？エラーはバックエンドウィンドウに表示されます。バックエンドウィンドウを閉じると終了します。※プライバシーについての公式見解: https://support.google.com/gemini?p=privacy_help",
     examples=["こんにちは", "Geminiとは何ですか?", "Pythonとは何ですか?"],
     cache_examples=True,

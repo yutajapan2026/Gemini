@@ -1,3 +1,4 @@
+import webbrowser
 import os
 import tkinter as tk
 
@@ -36,11 +37,15 @@ img = tk.PhotoImage(file="logo.png")
 label2 = tk.Label(root, image=img, font=("Arial", 30))
 label2.pack()
 def gemini_chat():
+    root.destroy()
     import chat_app
+
 button1 = tk.Button(root, text="チャット", command=gemini_chat)
 button1.pack()
 def gemini_tts():
+    root.destroy()
     import tts_app
+
 button2 = tk.Button(root, text="音声合成", command=gemini_tts)
 button2.pack()
 root.mainloop()
