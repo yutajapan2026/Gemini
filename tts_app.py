@@ -31,6 +31,8 @@ def tts(prompt, speaker, wavname, savedirectory, auto_open):
     )
     file = wavname + ".wav"
     wave_file(file, base64.b64decode(interaction.output_audio.data))
+    if not savedirectory:
+        savedirectory = "wavs"
     shutil.move(file, savedirectory)
     fullpath = os.path.join(savedirectory, file)
     if auto_open:
