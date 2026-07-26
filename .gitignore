@@ -1,7 +1,6 @@
 /venv
 /.gradio
 /_pycache_
-/wavs
 .txt
 *.exe
 *.bat

@@ -12,6 +12,9 @@ print("履歴を作成しています...")
 interaction = client.interactions.create(
 model="gemini-3.5-flash",
 input="",
+generation_config={
+        "thinking_level": "low"
+    }
 )
 
 webbrowser.open('http://127.0.0.1:7860')
@@ -22,6 +25,9 @@ def gemini(message, history):
     model="gemini-3.5-flash",
     previous_interaction_id=interaction.id,
     input=message,
+    generation_config={
+        "thinking_level": "low"
+    }
     )
     return interaction.output_text
 
