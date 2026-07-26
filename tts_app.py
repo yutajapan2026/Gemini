@@ -52,7 +52,7 @@ webbrowser.open('http://127.0.0.1:7860')
 gr.Interface(
     fn=tts,
     title="gemini-3.1-flash-tts-preview",
-    description="save_directory(デフォルトはC:/Users/{getpass.getuser()}/Music/)：音声を保存するディレクトリ。　file_name(デフォルトはoutput.wav)：保存するファイル名。拡張子はいりません。　speakerについて(デフォルトはKore)：話者。種類：https://ai.google.dev/gemini-api/docs/speech-generation?hl=ja&_gl=1*2p2973*_up*MQ..*_ga*NzAzNDQ1OC4xNzg0OTAxNDM1*_ga_P1DBVKWT6V*czE3ODQ5MDE0MzQkbzEkZzAkdDE3ODQ5MDE0MzQkajYwJGwwJGg0MDMyMjU1MTU.#voices",
+    description="save_directory(デフォルトはC:/Users/{getpass.getuser()}/Music/)：音声を保存するディレクトリ。　file_name(デフォルトはoutput.wav)：保存するファイル名。拡張子はいりません。　speakerについて(デフォルトはKore)：話者。種類https://ai.google.dev/gemini-api/docs/speech-generation?hl=ja&_gl=1*2p2973*_up*MQ..*_ga*NzAzNDQ1OC4xNzg0OTAxNDM1*_ga_P1DBVKWT6V*czE3ODQ5MDE0MzQkbzEkZzAkdDE3ODQ5MDE0MzQkajYwJGwwJGg0MDMyMjU1MTU.#voices",
     inputs=["text", "text", "text", "text", "checkbox"],
     outputs=["text"],
     api_name="gemini-3.1-flash-tts-preview",
