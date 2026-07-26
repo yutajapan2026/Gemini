@@ -1,6 +1,5 @@
 /venv
 /.gradio
-_pycache_
 .txt
 *.exe
 *.bat
