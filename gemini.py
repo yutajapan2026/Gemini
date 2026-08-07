@@ -48,4 +48,15 @@ def gemini_tts():
 
 button2 = tk.Button(root, text="音声合成", command=gemini_tts)
 button2.pack()
+def api_key_fix():
+    root.destroy()
+    os.startfile('.txt')
+button3 = tk.Button(root, text="APIキーの修正", command=api_key_fix)
+button3.pack()
+def link_click(url):
+    root.destroy()
+    webbrowser.open_new(url)
+label3 = tk.Label(root, text="その他のモデル", fg="blue", cursor="hand2", font=("Arial", 10), underline=True)
+label3.pack(pady=(0, 10))
+label3.bind("<Button-1>",lambda e:link_click("https://ai.google.dev/gemini-api/docs/models?hl=ja"))
 root.mainloop()
