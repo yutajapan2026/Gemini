@@ -2,9 +2,7 @@ import webbrowser
 import os
 import tkinter as tk
 
-if os.path.exists('.txt'):
-    pass
-else:
+def api_key_input():
     root = tk.Tk()
     root.title("Gemini - APIキーの入力")
     root.state("zoomed")
@@ -28,6 +26,11 @@ else:
     button.pack()
     root.mainloop()
 
+if os.path.exists('.txt'):
+    pass
+else:
+    api_key_input()
+
 root = tk.Tk()
 root.title("Gemini")
 root.state("zoomed")
@@ -50,11 +53,11 @@ button2 = tk.Button(root, text="音声合成", command=gemini_tts)
 button2.pack()
 def api_key_fix():
     root.destroy()
-    os.startfile('.txt')
+    os.remove('.txt')
+    api_key_input()
 button3 = tk.Button(root, text="APIキーの修正", command=api_key_fix)
 button3.pack()
 def link_click(url):
-    root.destroy()
     webbrowser.open_new(url)
 label3 = tk.Label(root, text="その他のモデル", fg="blue", cursor="hand2", font=("Arial", 10), underline=True)
 label3.pack(pady=(0, 10))
