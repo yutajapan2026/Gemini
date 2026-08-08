@@ -20,7 +20,7 @@ generation_config={
 def gemini(message, history):
     global interaction
     if not message:
-        return "プロンプトを入力してください。"
+        return "プロンプトを入力してください(エラー400を防ぎました)。"
     interaction = client.interactions.create(
     model="gemini-3.6-flash",
     previous_interaction_id=interaction.id,
