@@ -1,7 +1,4 @@
 /venv
 /.gradio
-*.iss
-.txt
 *.exe
 *.bat
-test.py

@@ -19,6 +19,8 @@ with open('.txt', "r", encoding="utf-8") as f:
 client = genai.Client(api_key=content)
 
 def tts(prompt, speaker, save_directory, file_name, auto_open):
+    if not prompt:
+        return "プロンプトを入力してください。"
     interaction = client.interactions.create(
         model="gemini-3.1-flash-tts-preview",
         input=prompt,
@@ -52,7 +54,7 @@ webbrowser.open('http://127.0.0.1:7860')
 gr.Interface(
     fn=tts,
     title="gemini-3.1-flash-tts-preview",
-    description="エラーはバックエンドウィンドウに表示されます。バックエンドウィンドウでctrl+Cを押すと終了します。save_directory(デフォルトはC:/Users/{getpass.getuser()}/Music/)：音声を保存するディレクトリ。　file_name(デフォルトはoutput.wav)：保存するファイル名。拡張子はいりません。　speaker：話者(デフォルトはKore)。種類https://ai.google.dev/gemini-api/docs/speech-generation?hl=ja&_gl=1*2p2973*_up*MQ..*_ga*NzAzNDQ1OC4xNzg0OTAxNDM1*_ga_P1DBVKWT6V*czE3ODQ5MDE0MzQkbzEkZzAkdDE3ODQ5MDE0MzQkajYwJGwwJGg0MDMyMjU1MTU.#voices",
+    description="エラーはバックエンドウィンドウに表示されます。バックエンドウィンドウでctrl+Cを押すと終了します。prompt:入力テキスト。必ず入力してください。save_directory(デフォルトはC:/Users/{getpass.getuser()}/Music/)：音声を保存するディレクトリ。　file_name(デフォルトはoutput.wav)：保存するファイル名。拡張子はいりません。　speaker(デフォルトはKore)：話者。種類https://ai.google.dev/gemini-api/docs/speech-generation?hl=ja&_gl=1*2p2973*_up*MQ..*_ga*NzAzNDQ1OC4xNzg0OTAxNDM1*_ga_P1DBVKWT6V*czE3ODQ5MDE0MzQkbzEkZzAkdDE3ODQ5MDE0MzQkajYwJGwwJGg0MDMyMjU1MTU.#voices",
     inputs=["text", "text", "text", "text", "checkbox"],
     outputs=["text"],
     api_name="gemini-3.1-flash-tts-preview",

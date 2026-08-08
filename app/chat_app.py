@@ -19,6 +19,8 @@ generation_config={
 
 def gemini(message, history):
     global interaction
+    if not message:
+        return "プロンプトを入力してください。"
     interaction = client.interactions.create(
     model="gemini-3.6-flash",
     previous_interaction_id=interaction.id,
@@ -36,7 +38,7 @@ gr.ChatInterface(
     chatbot=gr.Chatbot(height=300),
     textbox=gr.Textbox(placeholder="Geminiに相談", container=False, scale=7),
     title="gemini-3.6-flash",
-    description="何かお手伝いできることはありますか？エラーはバックエンドウィンドウに表示されます。バックエンドウィンドウでctrl+Cを押すと終了します。※プライバシーについての公式見解: https://support.google.com/gemini?p=privacy_help",
+    description="何かお手伝いできることはありますか？※エラーはバックエンドウィンドウに表示されます。※バックエンドウィンドウでctrl+Cを押すと終了します。※プライバシーについての公式見解: https://support.google.com/gemini?p=privacy_help",
     examples=["こんにちは", "Geminiとは何ですか?", "Pythonとは何ですか?"],
     cache_examples=True,
 ).launch()
