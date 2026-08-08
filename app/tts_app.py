@@ -57,6 +57,6 @@ gr.Interface(
     description="エラーはバックエンドウィンドウに表示されます。バックエンドウィンドウでctrl+Cを押すと終了します。prompt:入力テキスト。必ず入力してください。save_directory(デフォルトはC:/Users/{getpass.getuser()}/Music/)：音声を保存するディレクトリ。　file_name(デフォルトはoutput.wav)：保存するファイル名。拡張子はいりません。　speaker(デフォルトはKore)：話者。種類https://ai.google.dev/gemini-api/docs/speech-generation?hl=ja&_gl=1*2p2973*_up*MQ..*_ga*NzAzNDQ1OC4xNzg0OTAxNDM1*_ga_P1DBVKWT6V*czE3ODQ5MDE0MzQkbzEkZzAkdDE3ODQ5MDE0MzQkajYwJGwwJGg0MDMyMjU1MTU.#voices",
     inputs=["text", "text", "text", "text", "checkbox"],
     outputs=["text"],
-    examples=[["こんにちは", "Kore", "C:/Users/{getpass.getuser()}/Music/", "output", True]],
+    examples=[["こんにちは", "", "", "", True]],
     api_name="gemini-3.1-flash-tts-preview",
 ).launch()
