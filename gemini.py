@@ -10,9 +10,6 @@ def api_key_input():
         webbrowser.open_new(url)
     label1 = tk.Label(root, text="Gemini", font=("Arial", 30))
     label1.pack()
-    img = tk.PhotoImage(file="logo.png")
-    label2 = tk.Label(root, image=img, font=("Arial", 30))
-    label2.pack()
     label3 = tk.Label(root, text="APIキーをここから取得して入力してください", fg="blue", cursor="hand2", font=("Arial", 10), underline=True)
     label3.pack(pady=(0, 10))
     label3.bind("<Button-1>",lambda e:link_click("https://aistudio.google.com/api-keys"))
@@ -32,7 +29,7 @@ else:
     api_key_input()
 
 root = tk.Tk()
-root.title("Gemini")
+root.title("Gemini - ホーム")
 root.state("zoomed")
 label1 = tk.Label(root, text="Gemini", font=("Arial", 30))
 label1.pack()
@@ -40,22 +37,16 @@ img = tk.PhotoImage(file="logo.png")
 label2 = tk.Label(root, image=img, font=("Arial", 30))
 label2.pack()
 def gemini_chat():
-    root.destroy()
     import chat_app
 
 button1 = tk.Button(root, text="チャット", command=gemini_chat)
 button1.pack()
 def gemini_tts():
-    root.destroy()
     import tts_app
 
 button2 = tk.Button(root, text="音声合成", command=gemini_tts)
 button2.pack()
-def api_key_fix():
-    root.destroy()
-    os.remove('.txt')
-    api_key_input()
-button3 = tk.Button(root, text="APIキーの修正", command=api_key_fix)
+button3 = tk.Button(root, text="APIキーの修正", command=api_key_input)
 button3.pack()
 def link_click(url):
     webbrowser.open_new(url)
