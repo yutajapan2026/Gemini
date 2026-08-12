@@ -56,6 +56,6 @@ label3.bind("<Button-1>",lambda e:link_click("https://ai.google.dev/gemini-api/d
 label4 = tk.Label(root, text="アップデートの確認", fg="blue", cursor="hand2", font=("Arial", 10), underline=True)
 label4.pack(pady=(0, 10))
 label4.bind("<Button-1>",lambda e:link_click("https://github.com/yutajapan2026/Gemini/releases"))
-label5 = tk.Label(root, text="アプリのバージョン:1.0", cursor="hand2", font=("Arial", 10))
+label5 = tk.Label(root, text="アプリのバージョン:1.0", font=("Arial", 10))
 label5.pack(pady=(0, 10))
 root.mainloop()
