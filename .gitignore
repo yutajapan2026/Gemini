@@ -1,3 +1,7 @@
 /venv
+/app/.gradio
+/app/__pycache__
+/app/test.py
+/app/.txt
 *.exe
 *.bat
