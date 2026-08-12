@@ -53,4 +53,7 @@ def link_click(url):
 label3 = tk.Label(root, text="その他のモデル", fg="blue", cursor="hand2", font=("Arial", 10), underline=True)
 label3.pack(pady=(0, 10))
 label3.bind("<Button-1>",lambda e:link_click("https://ai.google.dev/gemini-api/docs/models?hl=ja"))
+label4 = tk.Label(root, text="アップデートの確認", fg="blue", cursor="hand2", font=("Arial", 10), underline=True)
+label4.pack(pady=(0, 10))
+label4.bind("<Button-1>",lambda e:link_click("https://github.com/yutajapan2026/Gemini/releases"))
 root.mainloop()
