@@ -4,7 +4,6 @@ from google import genai
 import wave
 import base64
 import gradio as gr
-import getpass
 import platform
 
 def wave_file(filename, pcm, channels=1, rate=24000, sample_width=2):
@@ -35,6 +34,7 @@ def tts(prompt, speaker, save_directory, file_name, auto_open):
 
     if not save_directory:
         if platform.system() == "Windows":
+            import getpass
             save_directory = f"C:/Users/{getpass.getuser()}/Music/"
         else:
             return "保存ディレクトリを入力してください。"
