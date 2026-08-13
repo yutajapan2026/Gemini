@@ -5,6 +5,7 @@ import wave
 import base64
 import gradio as gr
 import getpass
+import platform
 
 def wave_file(filename, pcm, channels=1, rate=24000, sample_width=2):
     with wave.open(filename, "wb") as wf:
@@ -33,7 +34,10 @@ def tts(prompt, speaker, save_directory, file_name, auto_open):
     )
 
     if not save_directory:
-        save_directory = f"C:/Users/{getpass.getuser()}/Music/"
+        if platform.system() == "Windows":
+            save_directory = f"C:/Users/{getpass.getuser()}/Music/"
+        else:
+            return "保存ディレクトリを入力してください。"
 
     if not file_name:
         file_name = "output.wav"
@@ -45,8 +49,12 @@ def tts(prompt, speaker, save_directory, file_name, auto_open):
     wave_file(save_path, base64.b64decode(interaction.output_audio.data))
 
     if auto_open:
-        os.startfile(save_path)
-    
+        if platform.system() == "Windows":
+            os.startfile(save_path)
+        elif platform.system() == "Linux":
+            from playsound import playsound
+            playsound(save_path)
+
     return f"音声ファイルを保存しました: {save_path}"
 
 webbrowser.open('http://127.0.0.1:7860')
