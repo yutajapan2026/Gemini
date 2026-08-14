@@ -37,7 +37,7 @@ def tts(prompt, speaker, save_directory, file_name, auto_open):
             import getpass
             save_directory = f"C:/Users/{getpass.getuser()}/Music/"
         else:
-            os.mkdir("output")
+            os.makedirs("output", exist_ok=True)
             save_directory = "output"
 
     if not file_name:
