@@ -13,7 +13,7 @@ unzip Gemini.zip
 cd Gemini-$VERSION
 bash launch.sh
 ```
-で実行したほうが安定します。常に最新版が欲しいなら、
+で実行したほうが安定します。しかし、常に最新版が欲しいなら、
 ```
 sudo apt-get install git
 git clone https://github.com/yutajapan2026/Gemini.git
@@ -21,6 +21,8 @@ cd Gemini
 bash launch.sh
 ```
 でできますが、ミスでエラーが発生したり関係ないファイルが入っていたりする可能性があります。
+
+⚠️linux版は自動でブラウザーを開きません。バックエンドに表示されるURLを確認して開いてください。
 
 ## 特徴
 - python-genaiモジュール使用
