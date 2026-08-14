@@ -3,5 +3,6 @@
 /app/__pycache__
 /app/test.py
 /app/.txt
+/app/output
 *.exe
 *.bat
