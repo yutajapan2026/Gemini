@@ -2,7 +2,7 @@
 [Gemini API](https://github.com/googleapis/python-genai)をwebui化したもの。
 
 ## For Windows
-Releasesにインストーラ版を公開予定
+[Releases](https://github.com/yutajapan2026/Gemini/releases)にインストーラ版を公開
 
 ## For Linux
 Releasesのバージョン(以下$VERSIONとしますが臨機応変に変更してください)を参照して
@@ -13,7 +13,14 @@ unzip Gemini.zip
 cd Gemini-$VERSION
 bash launch.sh
 ```
-で実行したほうが安定します。
+で実行したほうが安定します。常に最新版が欲しいなら、
+```
+sudo apt-get install git
+git clone https://github.com/yutajapan2026/Gemini.git
+cd Gemini
+bash launch.sh
+```
+でできますが、ミスでエラーが発生したり関係ないファイルが入っていたりする可能性があります。
 
 ## 特徴
 - python-genaiモジュール使用
