@@ -37,7 +37,8 @@ def tts(prompt, speaker, save_directory, file_name, auto_open):
             import getpass
             save_directory = f"C:/Users/{getpass.getuser()}/Music/"
         else:
-            return "保存ディレクトリを入力してください。"
+            os.mkdir("output")
+            save_directory = "output"
 
     if not file_name:
         file_name = "output.wav"
@@ -51,18 +52,16 @@ def tts(prompt, speaker, save_directory, file_name, auto_open):
     if auto_open:
         if platform.system() == "Windows":
             os.startfile(save_path)
-        elif platform.system() == "Linux":
-            from playsound import playsound
-            playsound(save_path)
 
     return f"音声ファイルを保存しました: {save_path}"
 
-webbrowser.open('http://127.0.0.1:7860')
+if platform.system() == "Windows":
+    webbrowser.open('http://127.0.0.1:7860')
 
 gr.Interface(
     fn=tts,
     title="gemini-3.1-flash-tts-preview",
-    description="エラーはバックエンドウィンドウに表示されます。バックエンドウィンドウでctrl+Cを押すと終了します。prompt:入力テキスト。必ず入力してください。save_directory(デフォルトはC:/Users/{getpass.getuser()}/Music/)：音声を保存するディレクトリ。　file_name(デフォルトはoutput.wav)：保存するファイル名。拡張子はいりません。　speaker(デフォルトはKore)：話者。種類https://ai.google.dev/gemini-api/docs/speech-generation?hl=ja&_gl=1*2p2973*_up*MQ..*_ga*NzAzNDQ1OC4xNzg0OTAxNDM1*_ga_P1DBVKWT6V*czE3ODQ5MDE0MzQkbzEkZzAkdDE3ODQ5MDE0MzQkajYwJGwwJGg0MDMyMjU1MTU.#voices",
+    description="エラーはバックエンドウィンドウに表示されます。バックエンドウィンドウでctrl+Cを押すと終了します。prompt:入力テキスト。必ず入力してください。save_directory(WindowsデフォルトはC:/Users/{getpass.getuser()}/Music/、linuxはアプリディレクトリ)：音声を保存するディレクトリ。　file_name(デフォルトはoutput.wav)：保存するファイル名。拡張子はいりません。　auto_open(Windowsのみ)：自動再生。　speaker(デフォルトはKore)：話者。種類https://ai.google.dev/gemini-api/docs/speech-generation?hl=ja&_gl=1*2p2973*_up*MQ..*_ga*NzAzNDQ1OC4xNzg0OTAxNDM1*_ga_P1DBVKWT6V*czE3ODQ5MDE0MzQkbzEkZzAkdDE3ODQ5MDE0MzQkajYwJGwwJGg0MDMyMjU1MTU.#voices",
     inputs=["text", "text", "text", "text", "checkbox"],
     outputs=["text"],
     examples=[["こんにちは", "", "", "", True]],

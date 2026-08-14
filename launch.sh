@@ -1,24 +1,22 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-${VENV_DIR:="venv"}
+sudo apt update
+sudo apt install -y python3 python3-venv python3-pip fonts-ipafont
 
-sudo apt-get update
-sudo apt-get install -y python3 python3-venv python3-pip
-
-echo "‰¼‘zŠÂ‹«‚ðì¬’†..."
-if [ ! -d "$VENV_DIR" ]; then
-    python3 -m venv "$VENV_DIR"
+echo "ä»®æƒ³ç’°å¢ƒã‚’ä½œæˆä¸­..."
+if [ ! -d "venv" ]; then
+    python3 -m venv "venv"
 fi
 
 # shellcheck disable=SC1090
-source "$VENV_DIR/bin/activate"
+source "venv/bin/activate"
 
-echo "pip ‚ðXV’†..."
+echo "pip ã‚’æ›´æ–°ä¸­..."
 python -m pip install --upgrade pip
 
-echo "google-genai ‚Æ gradio ‚ðƒCƒ“ƒXƒg[ƒ‹’†..."
+echo "google-genai ã¨ gradio ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 python -m pip install google-genai gradio
 
-echo "ƒAƒvƒŠ‚ð‹N“®’†..."
+echo "ã‚¢ãƒ—ãƒªã‚’èµ·å‹•ä¸­..."
 cd app
-python gemini.py
+python gemini_linux.py

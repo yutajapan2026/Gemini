@@ -1,6 +1,7 @@
 import webbrowser
 import gradio as gr
 from google import genai
+import platform
 
 with open('.txt', "r", encoding="utf-8") as f:
     content = f.read()
@@ -31,7 +32,8 @@ def gemini(message, history):
     )
     return interaction.output_text
 
-webbrowser.open('http://127.0.0.1:7860')
+if platform.system() == "Windows":
+    webbrowser.open('http://127.0.0.1:7860')
 
 gr.ChatInterface(
     fn=gemini,
